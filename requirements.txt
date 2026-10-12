@@ -1,0 +1,5 @@
+playwright
+pydantic
+python-dotenv
+openai
+flask

@@ -1,0 +1,34 @@
+{
+  "events": [
+    {
+      "timestamp": "2026-09-29T14:51:48.644331+00:00",
+      "event": "intervention_requested",
+      "state": "PAUSED",
+      "reason": "Automation encountered a condition requiring operator review."
+    },
+    {
+      "timestamp": "2026-09-29T14:51:48.727227+00:00",
+      "event": "control_transferred_to_human",
+      "state": "HUMAN",
+      "reason": null
+    },
+    {
+      "timestamp": "2026-09-29T14:52:00.678911+00:00",
+      "event": "human_actions_completed",
+      "state": "HUMAN",
+      "reason": null
+    },
+    {
+      "timestamp": "2026-09-29T14:52:00.678946+00:00",
+      "event": "control_returned_to_automation",
+      "state": "AUTOMATION",
+      "reason": null
+    },
+    {
+      "timestamp": "2026-09-29T14:52:00.806617+00:00",
+      "event": "run_completed",
+      "state": "COMPLETE",
+      "reason": null
+    }
+  ]
+}

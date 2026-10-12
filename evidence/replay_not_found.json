@@ -1,0 +1,12 @@
+{
+  "timestamp": "2026-09-29T14:51:38.708117+00:00",
+  "capability": "lookup_member_balance",
+  "input": {
+    "member_id": "[REDACTED]"
+  },
+  "result": {
+    "status": "BUSINESS_OUTCOME",
+    "outcome": "MEMBER_NOT_FOUND",
+    "message": "Member not found."
+  }
+}

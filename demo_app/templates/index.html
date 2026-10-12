@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Servicing Portal</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            color: #1f2937;
+        }
+
+        .header {
+            background: #123b63;
+            color: white;
+            padding: 18px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 22px;
+        }
+
+        .header span {
+            font-size: 14px;
+            opacity: 0.85;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        h2 {
+            margin-top: 0;
+            color: #123b63;
+        }
+
+        .subtitle {
+            color: #6b7280;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .search-row {
+            display: flex;
+            gap: 12px;
+        }
+
+        input {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        input:focus {
+            outline: 2px solid #3b82f6;
+            border-color: transparent;
+        }
+
+        button {
+            background: #1769aa;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 12px 22px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        button:hover {
+            background: #12558a;
+        }
+
+        .error {
+            margin-top: 20px;
+            padding: 13px;
+            background: #fef2f2;
+            border-left: 4px solid #dc2626;
+            color: #991b1b;
+        }
+
+        .success {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .success-badge {
+            display: inline-block;
+            background: #ecfdf5;
+            color: #047857;
+            padding: 6px 10px;
+            border-radius: 4px;
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 14px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        td:first-child {
+            width: 35%;
+            font-weight: bold;
+            color: #4b5563;
+            background: #f9fafb;
+        }
+
+        .footer {
+            text-align: center;
+            color: #9ca3af;
+            font-size: 12px;
+            margin-top: 25px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>Member Servicing Portal</h1>
+        <span>Internal Operations</span>
+    </div>
+
+    <div class="container">
+
+        <div class="card">
+
+            <h2>Member Lookup</h2>
+
+            <p class="subtitle">
+                Search for a member using their Member ID.
+            </p>
+
+            <form method="POST">
+
+                <label for="member_id">Member ID</label>
+
+                <div class="search-row">
+
+                    <input
+                        id="member_id"
+                        name="member_id"
+                        type="text"
+                        placeholder="Enter Member ID"
+                        value="{{ searched_id or '' }}"
+                        autocomplete="off"
+                    >
+
+                    <button type="submit">
+                        Search Member
+                    </button>
+
+                </div>
+
+            </form>
+
+            {% if error %}
+
+                <div class="error" role="alert">
+                    {{ error }}
+                </div>
+
+            {% endif %}
+
+
+            {% if member %}
+
+                <div class="success">
+
+                    <span class="success-badge">
+                        Member record found
+                    </span>
+
+                    <h2>Member Details</h2>
+
+                    <table>
+
+                        <tr>
+                            <td>Member ID</td>
+                            <td>{{ searched_id }}</td>
+                        </tr>
+
+                        <tr>
+                            <td>Name</td>
+                            <td id="member-name">
+                                {{ member.name }}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Savings Balance</td>
+                            <td id="savings-balance">
+                                {{ member.savings_balance }}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Account Status</td>
+                            <td>
+                                {{ member.status }}
+                            </td>
+                        </tr>
+
+                    </table>
+
+                    <p id="lookup-success" style="display:none;">
+                        Member record loaded successfully.
+                    </p>
+
+                </div>
+
+            {% endif %}
+
+        </div>
+
+        <div class="footer">
+            Demo Banking Operations System
+        </div>
+
+    </div>
+
+</body>
+</html>

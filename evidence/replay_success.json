@@ -1,0 +1,13 @@
+{
+  "timestamp": "2026-09-29T14:51:32.681549+00:00",
+  "capability": "lookup_member_balance",
+  "input": {
+    "member_id": "[REDACTED]"
+  },
+  "result": {
+    "status": "SUCCESS",
+    "outputs": {
+      "savings_balance": "$2,450.75"
+    }
+  }
+}

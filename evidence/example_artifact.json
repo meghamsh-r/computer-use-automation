@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.0",
+  "capability_version": "1.0",
+  "name": "lookup_member_balance",
+  "description": "Look up a member and return their savings balance.",
+  "target_app": "Demo Member Servicing Portal",
+  "start_url": "http://127.0.0.1:5000",
+  "inputs": [
+    {
+      "name": "member_id",
+      "type": "string",
+      "description": "Member ID to search for",
+      "required": true
+    }
+  ],
+  "outputs": [
+    {
+      "name": "savings_balance",
+      "type": "string",
+      "description": "Current savings balance",
+      "locator": {
+        "strategy": "css",
+        "value": "#savings-balance",
+        "role": null
+      }
+    }
+  ],
+  "steps": [
+    {
+      "id": "step_1",
+      "action": "type",
+      "locator": {
+        "strategy": "label",
+        "value": "Member ID",
+        "role": null
+      },
+      "value": "{{member_id}}",
+      "description": "Enter the member ID",
+      "expected_state": "Member ID is entered in the search field."
+    },
+    {
+      "id": "step_2",
+      "action": "click",
+      "locator": {
+        "strategy": "role",
+        "value": "Search Member",
+        "role": "button"
+      },
+      "value": null,
+      "description": "Search for the member.",
+      "expected_state": "Member details or a business outcome is displayed."
+    }
+  ],
+  "success_checkpoint": {
+    "description": "Member record successfully loaded.",
+    "locator": {
+      "strategy": "css",
+      "value": "#lookup-success",
+      "role": null
+    },
+    "expected": "Member record loaded successfully."
+  },
+  "allowed_domains": [
+    "127.0.0.1"
+  ],
+  "allowed_actions": [
+    "type",
+    "click",
+    "read"
+  ],
+  "metadata": {
+    "surface": "web",
+    "artifact_status": "draft",
+    "contains_sensitive_data": false
+  }
+}
